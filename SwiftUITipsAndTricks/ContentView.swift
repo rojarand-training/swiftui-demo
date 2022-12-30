@@ -9,9 +9,17 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
     var body: some View {
-        Text("Hello World")
+        VStack(spacing: 10) {
+            Text("Hello")
+                .background(.white)
+            Spacer()
+                .frame(height: 25)
+            Text("World 1")
+                .background(.yellow)
+            Text("World 2")
+                .background(.yellow)
+        }.background(.gray)
     }
 }
 
