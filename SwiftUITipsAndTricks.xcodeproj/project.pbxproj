@@ -11,8 +11,6 @@
 		D618CB64295ED24000601356 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB63295ED24000601356 /* ContentView.swift */; };
 		D618CB66295ED24000601356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D618CB65295ED24000601356 /* Assets.xcassets */; };
 		D618CB69295ED24000601356 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D618CB68295ED24000601356 /* Preview Assets.xcassets */; };
-		D618CB6B295ED24000601356 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB6A295ED24000601356 /* Persistence.swift */; };
-		D618CB6E295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D618CB6C295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodeld */; };
 		D618CB78295ED24100601356 /* SwiftUITipsAndTricksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB77295ED24100601356 /* SwiftUITipsAndTricksTests.swift */; };
 		D618CB82295ED24100601356 /* SwiftUITipsAndTricksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */; };
 		D618CB84295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */; };
@@ -41,8 +39,6 @@
 		D618CB63295ED24000601356 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D618CB65295ED24000601356 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D618CB68295ED24000601356 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D618CB6A295ED24000601356 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		D618CB6D295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftUITipsAndTricks.xcdatamodel; sourceTree = "<group>"; };
 		D618CB73295ED24100601356 /* SwiftUITipsAndTricksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUITipsAndTricksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB77295ED24100601356 /* SwiftUITipsAndTricksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksTests.swift; sourceTree = "<group>"; };
 		D618CB7D295ED24100601356 /* SwiftUITipsAndTricksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUITipsAndTricksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,8 +97,6 @@
 				D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */,
 				D618CB63295ED24000601356 /* ContentView.swift */,
 				D618CB65295ED24000601356 /* Assets.xcassets */,
-				D618CB6A295ED24000601356 /* Persistence.swift */,
-				D618CB6C295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodeld */,
 				D618CB67295ED24000601356 /* Preview Content */,
 			);
 			path = SwiftUITipsAndTricks;
@@ -263,8 +257,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D618CB6B295ED24000601356 /* Persistence.swift in Sources */,
-				D618CB6E295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodeld in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
 			);
@@ -591,19 +583,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D618CB6C295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D618CB6D295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodel */,
-			);
-			currentVersion = D618CB6D295ED24000601356 /* SwiftUITipsAndTricks.xcdatamodel */;
-			path = SwiftUITipsAndTricks.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D618CB56295ED24000601356 /* Project object */;
 }
