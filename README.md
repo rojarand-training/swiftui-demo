@@ -1,13 +1,6 @@
-//
-//  ContentView.swift
-//  SwiftUITipsAndTricks
-//
-//  Created by Robert Andrzejczyk on 30/12/2022.
-//
+## Padding example
 
-import SwiftUI
-import CoreData
-
+```swift
 struct ContentView: View {
 
     var body: some View {
@@ -21,9 +14,6 @@ struct ContentView: View {
         }
     }
 }
+```
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+<img src="preview.png" width="50%" >
