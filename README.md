@@ -1,12 +1,5 @@
-## Text example
+## Banner example
 
-```swift
-struct ContentView: View {
+Some examples available [here](https://github.com/PacktPublishing/SwiftUI-Cookbook-2nd-Edition/blob/main/Chapter08-Animating-with-SwiftUI).
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+<img src="preview.gif">

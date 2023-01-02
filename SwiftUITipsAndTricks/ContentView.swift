@@ -23,12 +23,6 @@ struct BannerView: View {
             .offset(y: show ?
                     UIScreen.main.bounds.height / 2.5 :
                         UIScreen.main.bounds.height)
-            .animation(
-                .interpolatingSpring(mass: 1.0,
-                                     stiffness: 100.0,
-                                     damping: 10,
-                                     initialVelocity: 0),
-                value: show)
     }
 }
 
@@ -40,7 +34,15 @@ struct ContentView: View {
         VStack {
             BannerView(message: "Hello, World!", show: show)
             Button {
-                show.toggle()
+                withAnimation(.easeOut(duration: 1.2)) {
+                    show.toggle()
+                    if show {
+                        Task {
+                            try? await Task.sleep(nanoseconds: 3_000_000_000)
+                            show.toggle()
+                        }
+                    }
+                }
             } label: {
                 Text(show ? "Hide" : "Show")
                     .padding()
