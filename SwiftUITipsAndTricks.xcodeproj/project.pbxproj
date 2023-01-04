@@ -14,6 +14,12 @@
 		D618CB78295ED24100601356 /* SwiftUITipsAndTricksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB77295ED24100601356 /* SwiftUITipsAndTricksTests.swift */; };
 		D618CB82295ED24100601356 /* SwiftUITipsAndTricksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */; };
 		D618CB84295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */; };
+		D65C65032966D49C001B8BBA /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C65022966D49C001B8BBA /* BannerView.swift */; };
+		D65C65052966D4D7001B8BBA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C65042966D4D7001B8BBA /* ErrorView.swift */; };
+		D65C65072966D678001B8BBA /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C65062966D678001B8BBA /* Loading.swift */; };
+		D65C65092966D6AE001B8BBA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C65082966D6AE001B8BBA /* Utils.swift */; };
+		D65C650C2966D71C001B8BBA /* Scaffolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C650B2966D71C001B8BBA /* Scaffolding.swift */; };
+		D65C650E2966D96B001B8BBA /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C650D2966D96B001B8BBA /* AsyncContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		D618CB7D295ED24100601356 /* SwiftUITipsAndTricksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUITipsAndTricksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITests.swift; sourceTree = "<group>"; };
 		D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D65C65022966D49C001B8BBA /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		D65C65042966D4D7001B8BBA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		D65C65062966D678001B8BBA /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		D65C65082966D6AE001B8BBA /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D65C650B2966D71C001B8BBA /* Scaffolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scaffolding.swift; sourceTree = "<group>"; };
+		D65C650D2966D96B001B8BBA /* AsyncContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +106,14 @@
 		D618CB60295ED24000601356 /* SwiftUITipsAndTricks */ = {
 			isa = PBXGroup;
 			children = (
+				D65C650A2966D6EC001B8BBA /* LoadStructures */,
+				D65C65082966D6AE001B8BBA /* Utils.swift */,
+				D65C65012966D48B001B8BBA /* Views */,
 				D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */,
 				D618CB63295ED24000601356 /* ContentView.swift */,
 				D618CB65295ED24000601356 /* Assets.xcassets */,
 				D618CB67295ED24000601356 /* Preview Content */,
+				D65C65062966D678001B8BBA /* Loading.swift */,
 			);
 			path = SwiftUITipsAndTricks;
 			sourceTree = "<group>";
@@ -125,6 +141,24 @@
 				D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */,
 			);
 			path = SwiftUITipsAndTricksUITests;
+			sourceTree = "<group>";
+		};
+		D65C65012966D48B001B8BBA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D65C65022966D49C001B8BBA /* BannerView.swift */,
+				D65C65042966D4D7001B8BBA /* ErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D65C650A2966D6EC001B8BBA /* LoadStructures */ = {
+			isa = PBXGroup;
+			children = (
+				D65C650B2966D71C001B8BBA /* Scaffolding.swift */,
+				D65C650D2966D96B001B8BBA /* AsyncContentView.swift */,
+			);
+			path = LoadStructures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +291,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65C65032966D49C001B8BBA /* BannerView.swift in Sources */,
+				D65C650C2966D71C001B8BBA /* Scaffolding.swift in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
+				D65C65072966D678001B8BBA /* Loading.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
+				D65C650E2966D96B001B8BBA /* AsyncContentView.swift in Sources */,
+				D65C65052966D4D7001B8BBA /* ErrorView.swift in Sources */,
+				D65C65092966D6AE001B8BBA /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
