@@ -1,12 +1,28 @@
-## Text example
+## Memory leak free assing
 
 ```swift
-struct ContentView: View {
+extension Publisher where Failure==Never {
+    func weakAssign<T: AnyObject>(
+        to kp: ReferenceWritableKeyPath<T, Output>,
+        on object: T) -> AnyCancellable {
+        
+        sink { [weak object] value in
+            object?[keyPath: kp] = value
+        }
+    }
+}
 
-    var body: some View {
-        Text("Hello World")
+class ContentViewModel: ObservableObject {
+    
+    @Published var currentDate: String = ""
+    private var cancellables: AnyCancellable?
+    
+    func updateDate() {
+        cancellables = Just<Date>(Date.now)
+            .map{ "\($0)" }
+            .weakAssign(to: \.currentDate, on: self)
     }
 }
 ```
 
-<img src="preview.png" width="40%" >
+<img src="preview.gif">
