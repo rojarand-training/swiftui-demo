@@ -13,16 +13,14 @@ class ContentViewModel: ObservableObject {
     
     @Published var randomValue: Int = 0
     
-    private var cancellables: Set<AnyCancellable> = []
+    private var cancellables: AnyCancellable?
     
     func generateRandomValue() {
-        Just<Int>(Int.random(in: 0...100))
+        cancellables = Just<Int>(Int.random(in: 0...100))
             .delay(for: 1, scheduler: RunLoop.main)
-            .sink { random in
-                self.randomValue = random
-            }.store(in: &cancellables)
-        
-        print("Cancellables count: \(cancellables.count)") // the value increases
+            .sink { [weak self] random in
+                self?.randomValue = random
+            }
     }
 }
 
@@ -32,7 +30,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Ramndom value: \(viewModel.randomValue)")
+            Text("Random value: \(viewModel.randomValue)")
             Button("Generate random value") {
                 viewModel.generateRandomValue()
             }
