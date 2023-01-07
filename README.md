@@ -1,10 +1,46 @@
-## Text example
+## Geometry reader example
 
 ```swift
-struct ContentView: View {
-
+struct MeasurableView<Content: View>: View {
+    
+    private let title: String
+    private let content: () -> Content
+    
+    init(_ title: String, @ViewBuilder content: @escaping () -> Content) {
+        self.title = title
+        self.content = content
+    }
+    
     var body: some View {
-        Text("Hello World")
+        GeometryReader { reader in
+            VStack {
+                Text("\(title)\nWidth: \(reader.size.width), height: \(reader.size.height)")
+                content()
+            }
+        }
+    }
+}
+
+struct ContentView: View {
+    
+    var body: some View {
+        VStack {
+            MeasurableView("Root") {
+                MeasurableView("Inner Top - nesting level 1") {
+                    Text("Inner top text 1")
+                    Text("Inner top text 2")
+                    Text("Inner top text 3")
+                    MeasurableView("Inside Inner Top - nesting level 2") {
+                        Text("Inner top text 1")
+                    }.padding()
+                    .border(.blue, width: 5)
+                    .background(.gray)
+                }.background(.yellow)
+                MeasurableView("Inner Bottom - nesting level 1") {
+                    Text("Inner bottom text")
+                }.background(.green)
+            }
+        }
     }
 }
 ```
