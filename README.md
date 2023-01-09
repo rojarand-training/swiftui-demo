@@ -1,12 +1,13 @@
-## Text example
+## Example of loading a view controller from xib a file
+
+If name of a xib file is the same as class of a view controller then passing the `nibName` argument can be omitted.
 
 ```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
+//XibViewController.xib
+XibViewController() //loads view using XibViewController.xib
 ```
 
-<img src="preview.png" width="40%" >
+```swift
+//XibWithDifferentNameThanClass.xib
+XibViewController(nibName: "XibWithDifferentNameThanClass", bundle: nil)
+```

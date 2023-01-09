@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
 
     var body: some View {
-        Text("Hello World")
+        XibControllerRepresentable()
     }
 }
 
@@ -20,3 +20,17 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct XibControllerRepresentable: UIViewControllerRepresentable {
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        XibViewController(nibName: "XibWithDifferentNameThanClass", bundle: nil)
+        //XibViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+    
+}
+

@@ -14,6 +14,8 @@
 		D618CB78295ED24100601356 /* SwiftUITipsAndTricksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB77295ED24100601356 /* SwiftUITipsAndTricksTests.swift */; };
 		D618CB82295ED24100601356 /* SwiftUITipsAndTricksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */; };
 		D618CB84295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */; };
+		D63D8B52296BF1700037F10C /* XibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63D8B50296BF1700037F10C /* XibViewController.swift */; };
+		D63D8B53296BF1700037F10C /* XibWithDifferentNameThanClass.xib in Resources */ = {isa = PBXBuildFile; fileRef = D63D8B51296BF1700037F10C /* XibWithDifferentNameThanClass.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		D618CB7D295ED24100601356 /* SwiftUITipsAndTricksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUITipsAndTricksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITests.swift; sourceTree = "<group>"; };
 		D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D63D8B50296BF1700037F10C /* XibViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibViewController.swift; sourceTree = "<group>"; };
+		D63D8B51296BF1700037F10C /* XibWithDifferentNameThanClass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XibWithDifferentNameThanClass.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 		D618CB55295ED24000601356 = {
 			isa = PBXGroup;
 			children = (
+				D63D8B50296BF1700037F10C /* XibViewController.swift */,
+				D63D8B51296BF1700037F10C /* XibWithDifferentNameThanClass.xib */,
 				D618CB60295ED24000601356 /* SwiftUITipsAndTricks */,
 				D618CB76295ED24100601356 /* SwiftUITipsAndTricksTests */,
 				D618CB80295ED24100601356 /* SwiftUITipsAndTricksUITests */,
@@ -232,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D618CB69295ED24000601356 /* Preview Assets.xcassets in Resources */,
+				D63D8B53296BF1700037F10C /* XibWithDifferentNameThanClass.xib in Resources */,
 				D618CB66295ED24000601356 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,6 +266,7 @@
 			files = (
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
+				D63D8B52296BF1700037F10C /* XibViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
