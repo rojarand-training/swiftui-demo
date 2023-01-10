@@ -1,12 +1,21 @@
-## Text example
+## Cancelling task example
+
+[Swift By Sundell](https://www.swiftbysundell.com/articles/the-role-tasks-play-in-swift-concurrency)
 
 ```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
+class ViewModel: ObservableObject {
+    private var task: Task<(), Error>?
+    
+    func waitAndPrintHello() {
+        task = Task {
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            print("Hello")
+        }
+    }
+    
+    func cancel() {
+        task?.cancel()
+        task = nil
     }
 }
 ```
-
-<img src="preview.png" width="40%" >
