@@ -1,12 +1,20 @@
-## Text example
+## Coordinator example
 
+Two different implementations works exchangebly
+
+1. `UIViewRepresentableContext`
 ```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
+func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
+...
 }
 ```
 
-<img src="preview.png" width="40%" >
+1. `Context`
+```swift
+func makeUIView(context: Context) -> UISearchBar {
+...
+}
+```
+
+
+<img src="preview.gif">
