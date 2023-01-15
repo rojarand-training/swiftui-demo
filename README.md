@@ -1,12 +1,5 @@
-## Text example
+## Text actor + mutable
 
-```swift
-struct ContentView: View {
+The actor safety model allows to safely mutate its property, despite the actor is `Sendable`.
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+<img src="preview.png" >
