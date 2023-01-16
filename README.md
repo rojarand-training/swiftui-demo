@@ -1,10 +1,26 @@
-## Text example
+## Show weird implicit task scheduler switch.
 
 ```swift
-struct ContentView: View {
+class ContentViewModel: ObservableObject {
+       
+    func fireTask() {
+        Task {
+            //this is executed in global thread
+        }
+    }
+}
 
+struct ContentView: View {
+    ...
     var body: some View {
-        Text("Hello World")
+        Button("Fire view.task") {
+            Task {
+                //this is executed in main thread
+            }
+        }
+        Button("Fire viewModel.task") {
+            viewModel.fireTask()
+        }
     }
 }
 ```
