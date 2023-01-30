@@ -8,10 +8,18 @@
 import SwiftUI
 import CoreData
 
+let name = "Robert"
+let multilineString = """
+    Hello \(name)
+            - "\(name)" is a cool name
+        I hope you are ok today.
+        - Good bye \(name)
+    """
+
 struct ContentView: View {
 
     var body: some View {
-        Text("Hello World")
+        Text(multilineString)
     }
 }
 
