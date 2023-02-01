@@ -1,12 +1,3 @@
-## Text example
+# [Example of button roles](https://sarunw.com/posts/swiftui-button-role/)
 
-```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+<img src="preview.gif">
