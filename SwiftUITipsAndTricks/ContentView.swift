@@ -8,10 +8,32 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+extension Button where Label==Image {
+    init(imageSystemName: String, action: @escaping () -> Void) {
+        self.init(action: action, label: {
+            Image(systemName: imageSystemName)
+        })
+    }
+}
 
+struct ContentView: View {
+    
     var body: some View {
-        Text("Hello World")
+        VStack {
+            Text("Hello World")
+            
+            //Normal way
+            Button {
+                print("Hello")
+            } label: {
+                Image(systemName: "folder.fill.badge.plus")
+            }
+            
+            //Improved way
+            Button(imageSystemName:"folder.fill.badge.plus") {
+                print("Hello")
+            }
+        }
     }
 }
 
