@@ -8,10 +8,21 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct CustomView: UIViewRepresentable {
+    func makeUIView(context: Context) -> some UIView {
+        let view = CustomUIView()
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
+    }
+}
 
+struct ContentView: View {
+    
     var body: some View {
-        Text("Hello World")
+        CustomView()
     }
 }
 
