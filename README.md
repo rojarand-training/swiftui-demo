@@ -1,12 +1,7 @@
-## Text example
+## Making color lighter & darker
 
-```swift
-struct ContentView: View {
+[advancedswift](https://www.advancedswift.com/lighter-and-darker-uicolor-swift/)
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
+Note this is primitive approach. There is color loosening.
 
-<img src="preview.png" width="40%" >
+<img src="preview.gif">
