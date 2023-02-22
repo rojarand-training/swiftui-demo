@@ -1,12 +1,7 @@
-## Text example
+## [Combine subjects](https://www.avanderlee.com/combine/passthroughsubject-currentvaluesubject-explained/)
 
-```swift
-struct ContentView: View {
+A `PassthroughSubject` is initialized without any value. A `CurrentValueSubject` wraps a single value and publishes a new element whenever the value changes. A new element is published even **if the updated value equals the current value**. Unlike the PassthroughSubject, a CurrentValueSubject always holds a value. **A new subscriber will directly receive the current value contained in the subject**.
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
+It’s important to understand the lifecycle of a subject. Whenever a **finished event is received, the subject will no longer pass through any new values**.
 
-<img src="preview.png" width="40%" >
+<img src="preview.gif">
