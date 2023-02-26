@@ -1,12 +1,42 @@
-## Text example
+## Collect, merge many example
 
 ```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
+var countryPublisher: AnyPublisher<Countries, Error> {
+        
+    guard let url = URL(string: "https://restcountries.com/v2/all") else {
+        let error = URLError(.badURL)
+        return Fail(outputType: Countries.self, failure: error).eraseToAnyPublisher()
     }
+    return URLSession.shared.dataTaskPublisher(for: url)
+        .map(\.data)
+        .decode(type: CountryNetworkModels.self, decoder: JSONDecoder())
+        .map { models in
+            models.prefix(10)
+        }
+        .tryMap { netModels -> [(name: String, url: URL)] in
+            try netModels.map { netModel in
+                guard let url = URL(string: netModel.flags.png) else {
+                    throw URLError(.badURL)
+                }
+                return (name: netModel.name, url: url)
+            }
+        }
+        .flatMap { (models) -> Publishers.MergeMany<AnyPublisher<Country, Error>> in
+            let tasks = models.map { (model) -> AnyPublisher<Country, Error> in
+                return URLSession.shared.dataTaskPublisher(for: model.url)
+                    .map { (data: Data, response: URLResponse) in
+                        Country(name: model.name, pngData: data)
+                    }
+                    .mapError({ failure in
+                        failure as Error
+                    })
+                    .eraseToAnyPublisher()
+            }
+            return Publishers.MergeMany(tasks)
+        }
+        .collect()
+        .eraseToAnyPublisher()
 }
 ```
 
-<img src="preview.png" width="40%" >
+<img src="preview.png" width="80%" >
