@@ -1,4 +1,6 @@
-## Collect, merge many example
+## [Collect, merge many example](https://www.donnywals.com/using-map-flatmap-and-compactmap-in-combine/)
+
+It is important to remember to properly `mapError` when using `flatMap`. Without it, compilation finishes with obscure compilation errors.
 
 ```swift
 var countryPublisher: AnyPublisher<Countries, Error> {

@@ -34,12 +34,56 @@ final class ContentViewModel: ObservableObject {
     }
     
     func load() {
-        cancellable = countryPublisher.receive(on: DispatchQueue.main)
+        cancellable = countryPublisher2.receive(on: DispatchQueue.main)
             .sink { completion in
                 print("Completion: \(completion)")
             } receiveValue: { countries in
                 self.countries = countries
             }
+    }
+    
+    var countryPublisher2: AnyPublisher<Countries, Error> {
+        
+        guard let url = URL(string: "https://restcountries.com/v2/all") else {
+            let error = URLError(.badURL)
+            return Fail(outputType: Countries.self, failure: error).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .mapError({ urlError in
+                urlError as Error
+            })
+            .map(\.data)
+            .decode(type: CountryNetworkModels.self, decoder: JSONDecoder())
+            .map { models in
+                Array(models.prefix(20))
+            }
+            .tryMap { netModels -> [(name: String, url: URL)] in
+                try netModels.map { netModel in
+                    guard let url = URL(string: netModel.flags.png) else {
+                        throw URLError(.badURL)
+                    }
+                    return (name: netModel.name, url: url)
+                }
+            }
+            .flatMap { models in
+                models.publisher.setFailureType(to: Error.self)
+            }
+            /*
+            .filter { model in
+                model.name.starts(with: "C")
+            }*/
+            .flatMap {
+                model in
+                return URLSession.shared.dataTaskPublisher(for: model.url)
+                    .map { (data: Data, response: URLResponse) in
+                        return Country(name: model.name, pngData: data)
+                    }.mapError { error in
+                        URLError(.badURL) as Error
+                    }
+            }
+            .collect()
+            .eraseToAnyPublisher()
     }
     
     var countryPublisher: AnyPublisher<Countries, Error> {
