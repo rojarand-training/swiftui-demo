@@ -28,6 +28,11 @@ struct ContentView: View {
 
 struct EditingView: View {
     @Binding var text: String
+    
+    init(text: Binding<String>) {
+        self._text = text
+    }
+    
     var body: some View {
         VStack {
             Text("I'm a child view")
