@@ -1,12 +1,7 @@
-## Text example
+## [Useful combine operators](https://blog.canopas.com/swift-11-useful-combine-operators-you-need-to-know-499cfdce0cd5)
 
-```swift
-struct ContentView: View {
+The `merge` operator combines two Publishers as if we’re receiving values from just one.
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
+The `zip` operator emits a tuple of paired values in the same indexes only after each publisher has emitted a value at the current index.
 
-<img src="preview.png" width="40%" >
+<img src="preview.gif" width="60%">
