@@ -6,31 +6,145 @@
 //
 
 import XCTest
+import Combine
 @testable import SwiftUITipsAndTricks
 
-final class SwiftUITipsAndTricksTests: XCTestCase {
+struct CountriesServiceStub: CountriesServiceType {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    private let countries: Countries
+    
+    init(countries: Countries) {
+        self.countries = countries
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func loadCountries(withToken token: String) -> AnyPublisher<Countries, Error> {
+        Just(countries)
+            .map { countries in
+                countries.with(tokenInName: token)
+            }
+            .delay(for: 1.0, scheduler: DispatchQueue.global())
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+
+extension Combine.Published<LoadStatus>.Publisher {
+    func statusPublisher() -> AnyPublisher<[LoadStatus], Never> {
+        self.dropFirst().collect(2).first().eraseToAnyPublisher()
     }
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+extension Array where Element == LoadStatus {
+    var countries: Countries? {
+        self.reduce(nil) { partialResult, loadStatus in
+            if case .loaded(let countries) = loadStatus {
+                return countries
+            } else {
+                return partialResult
+            }
         }
     }
-
 }
+
+
+extension Array where Element == String {
+    var countries: Countries {
+        map { name in Country(name: name) }
+    }
+}
+
+extension Array where Element == Country {
+    var names: [String] {
+        map { country in country.name }
+    }
+}
+
+final class SwiftUITipsAndTricksTests: XCTestCase {
+    
+    func countryService(loading countryNames: [String]) -> CountriesServiceType {
+        DefaultCountriesService(cachedCountries: countryNames.map { Country(name: $0) })
+    }
+    
+    func test_loads_countries_contianing_token_in_name() throws {
+        
+        //arrange
+        let countriesService = countryService(loading: ["Poland", "Germany", "England"])
+        let viewModel = CountriesViewModel(interval: 0.0, countriesService: countriesService)
+        let publisher = viewModel.$loadStatus.statusPublisher()
+        
+        //act
+        viewModel.searchToken = "land"
+        
+        //assert
+        let loadedCountries = try awaitPublisher(publisher, timeout: 1).countries!
+        XCTAssertEqual(["Poland", "England"], loadedCountries.names)
+    }
+    
+    func test_loads_countries_for_last_token_only() throws {
+        
+        //arrange
+        let countriesService = countryService(loading: ["Poland", "Germany", "England"])
+        let viewModel = CountriesViewModel(interval: 0.0, countriesService: countriesService)
+        let publisher = viewModel.$loadStatus.statusPublisher()
+        
+        //act
+        viewModel.searchToken = "land"
+        viewModel.searchToken = "many"
+        
+        
+        //assert
+        let loadedCountries = try awaitPublisher(publisher, timeout: 1).countries!
+        XCTAssertEqual(["Germany"], loadedCountries.names)
+    }
+}
+
+extension XCTestCase {
+    func awaitPublisher<T: Publisher>(
+        _ publisher: T,
+        timeout: TimeInterval = 10,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) throws -> T.Output {
+        // This time, we use Swift's Result type to keep track
+        // of the result of our Combine pipeline:
+        var result: Result<T.Output, Error>?
+        let expectation = self.expectation(description: "Awaiting publisher")
+        
+        let cancellable = publisher.sink(
+            receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    result = .failure(error)
+                case .finished:
+                    break
+                }
+                
+                expectation.fulfill()
+            },
+            receiveValue: { value in
+                result = .success(value)
+            }
+        )
+        
+        // Just like before, we await the expectation that we
+        // created at the top of our test, and once done, we
+        // also cancel our cancellable to avoid getting any
+        // unused variable warnings:
+        waitForExpectations(timeout: timeout)
+        cancellable.cancel()
+        
+        // Here we pass the original file and line number that
+        // our utility was called at, to tell XCTest to report
+        // any encountered errors at that original call site:
+        let unwrappedResult = try XCTUnwrap(
+            result,
+            "Awaited publisher did not produce any output",
+            file: file,
+            line: line
+        )
+        
+        return try unwrappedResult.get()
+    }
+}
+

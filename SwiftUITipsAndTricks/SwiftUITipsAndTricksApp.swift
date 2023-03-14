@@ -12,7 +12,7 @@ struct SwiftUITipsAndTricksApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CountriesView()
         }
     }
 }

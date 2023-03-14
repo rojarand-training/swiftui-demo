@@ -1,4 +1,4 @@
-## Text example
+## [Combine vs Async](https://peterfriese.dev/posts/combine-vs-async/)
 
 ```swift
 struct ContentView: View {
