@@ -10,6 +10,9 @@ import CoreData
 
 struct ContentView: View {
 
+    init() {
+        let parser = Parser()
+    }
     var body: some View {
         Text("Hello World")
     }

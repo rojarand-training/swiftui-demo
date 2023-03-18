@@ -10,27 +10,68 @@ import XCTest
 
 final class SwiftUITipsAndTricksTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func test_misc() {
+        Parser.misc()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func test_parse_bites() {
+       
+        let valBit0 = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+        let valAtBitFrom2To5 = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+        let valAtBitFrom6To7 = UnsafeMutablePointer<UInt8>.allocate(capacity: 1)
+        Parser.parseByte(0b10110101, valAtBit0: valBit0,
+                         valAtBitFrom2To5: valAtBitFrom2To5,
+                         valAtBitFrom6to7: valAtBitFrom6To7)
+        XCTAssertEqual(valBit0.pointee, 1)
+        XCTAssertEqual(valAtBitFrom2To5.pointee, 0b00001101)
+        XCTAssertEqual(valAtBitFrom6To7.pointee, 0b00000010)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_parse_positive_temperature() {
+        
+        let bytes: [UInt8] = [0x9E, 0x01, 0x02, 0x3F, 0x00, 0x55, 0x01, 0x3A, 0xFF, 0x00,
+                              0xE8, 0x02, 0x5B, 0x00, 0x1C, 0x4F, 0x49, 0x00, 0xE0, 0x52,
+                              0x25, 0x02, 0x00, 0x00, 0x00, 0x26, 0x00, 0x3C, 0x17]
+        
+        let data = Data(bytes)
+        let parser = Parser()
+        let parsingResult = parser.parse(data)
+        XCTAssertEqual(parsingResult.code, .Success)
+        
+        let advertisementFrame = parsingResult.frames[0] as! SensorAdvertisementFrame
+        let message = advertisementFrame.message
+        XCTAssertTrue(message.temperature > 0)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_parse_multiple_frames() {
+        
+        var bytes: [UInt8] = [0x9E, 0x01, 0x02, 0x3F, 0x00, 0x55, 0x01, 0x3A, 0xFF, 0x00,
+                              0xE8, 0x02, 0x5B, 0x00, 0x1C, 0x4F, 0x49, 0x00, 0xE0, 0x52,
+                              0x25, 0x02, 0x00, 0x00, 0x00, 0x26, 0x00, 0x3C, 0x17]
+       
+        bytes += bytes
+        let data = Data(bytes)
+        let parser = Parser()
+        let parsingResult = parser.parse(data)
+        XCTAssertEqual(parsingResult.code, .Success)
+        XCTAssertEqual(parsingResult.frames.count, 2)
     }
-
+    
+    func test_parse_negative_temperature() {
+        
+        let bytes: [UInt8] = [0x9E, 0x01, 0x00, 0xAB, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                              0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF,
+                              0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x18, 0x0, 0x21, 0x17]
+        
+        let data = Data(bytes)
+        let parser = Parser()
+        let parsingResult = parser.parse(data)
+        XCTAssertEqual(parsingResult.code, .Success)
+        
+        let advertisementFrame = parsingResult.frames[0] as! SensorAdvertisementFrame
+        let message = advertisementFrame.message
+        XCTAssertTrue(message.temperature < 0)
+    }
+    
 }

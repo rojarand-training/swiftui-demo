@@ -14,6 +14,11 @@
 		D618CB78295ED24100601356 /* SwiftUITipsAndTricksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB77295ED24100601356 /* SwiftUITipsAndTricksTests.swift */; };
 		D618CB82295ED24100601356 /* SwiftUITipsAndTricksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */; };
 		D618CB84295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */; };
+		D6AA4D0929C47AF300B42A3B /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D0729C4733E00B42A3B /* Parser.m */; };
+		D6AA4D0A29C47AF300B42A3B /* Parser-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D0829C4751F00B42A3B /* Parser-Bridging-Header.h */; };
+		D6AA4D0B29C47AF300B42A3B /* Parser.h in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D0629C4732600B42A3B /* Parser.h */; };
+		D6AA4D0E29C5C32200B42A3B /* SensorAdvertisementFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D0D29C5C32200B42A3B /* SensorAdvertisementFrame.m */; };
+		D6AA4D1129C5C3E600B42A3B /* ParsingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D1029C5C3E600B42A3B /* ParsingResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,13 @@
 		D618CB7D295ED24100601356 /* SwiftUITipsAndTricksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUITipsAndTricksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITests.swift; sourceTree = "<group>"; };
 		D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D6AA4D0629C4732600B42A3B /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		D6AA4D0729C4733E00B42A3B /* Parser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		D6AA4D0829C4751F00B42A3B /* Parser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parser-Bridging-Header.h"; sourceTree = "<group>"; };
+		D6AA4D0C29C5C2A300B42A3B /* SensorAdvertisementFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SensorAdvertisementFrame.h; sourceTree = "<group>"; };
+		D6AA4D0D29C5C32200B42A3B /* SensorAdvertisementFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SensorAdvertisementFrame.m; sourceTree = "<group>"; };
+		D6AA4D0F29C5C37E00B42A3B /* ParsingResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParsingResult.h; sourceTree = "<group>"; };
+		D6AA4D1029C5C3E600B42A3B /* ParsingResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParsingResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,13 @@
 		D618CB55295ED24000601356 = {
 			isa = PBXGroup;
 			children = (
+				D6AA4D1029C5C3E600B42A3B /* ParsingResult.m */,
+				D6AA4D0F29C5C37E00B42A3B /* ParsingResult.h */,
+				D6AA4D0D29C5C32200B42A3B /* SensorAdvertisementFrame.m */,
+				D6AA4D0C29C5C2A300B42A3B /* SensorAdvertisementFrame.h */,
+				D6AA4D0729C4733E00B42A3B /* Parser.m */,
+				D6AA4D0829C4751F00B42A3B /* Parser-Bridging-Header.h */,
+				D6AA4D0629C4732600B42A3B /* Parser.h */,
 				D618CB60295ED24000601356 /* SwiftUITipsAndTricks */,
 				D618CB76295ED24100601356 /* SwiftUITipsAndTricksTests */,
 				D618CB80295ED24100601356 /* SwiftUITipsAndTricksUITests */,
@@ -257,6 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AA4D0929C47AF300B42A3B /* Parser.m in Sources */,
+				D6AA4D0E29C5C32200B42A3B /* SensorAdvertisementFrame.m in Sources */,
+				D6AA4D1129C5C3E600B42A3B /* ParsingResult.m in Sources */,
+				D6AA4D0A29C47AF300B42A3B /* Parser-Bridging-Header.h in Sources */,
+				D6AA4D0B29C47AF300B42A3B /* Parser.h in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
 			);
@@ -433,6 +457,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = andro.eu.SwiftUITipsAndTricks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Parser-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,6 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = andro.eu.SwiftUITipsAndTricks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Parser-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
