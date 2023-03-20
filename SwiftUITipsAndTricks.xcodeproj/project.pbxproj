@@ -19,6 +19,7 @@
 		D6AA4D0B29C47AF300B42A3B /* Parser.h in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D0629C4732600B42A3B /* Parser.h */; };
 		D6AA4D0E29C5C32200B42A3B /* SensorAdvertisementFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D0D29C5C32200B42A3B /* SensorAdvertisementFrame.m */; };
 		D6AA4D1129C5C3E600B42A3B /* ParsingResult.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D1029C5C3E600B42A3B /* ParsingResult.m */; };
+		D6AA4D1429C841ED00B42A3B /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA4D1329C841ED00B42A3B /* Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		D6AA4D0D29C5C32200B42A3B /* SensorAdvertisementFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SensorAdvertisementFrame.m; sourceTree = "<group>"; };
 		D6AA4D0F29C5C37E00B42A3B /* ParsingResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParsingResult.h; sourceTree = "<group>"; };
 		D6AA4D1029C5C3E600B42A3B /* ParsingResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParsingResult.m; sourceTree = "<group>"; };
+		D6AA4D1229C841DF00B42A3B /* Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		D6AA4D1329C841ED00B42A3B /* Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 		D618CB55295ED24000601356 = {
 			isa = PBXGroup;
 			children = (
+				D6AA4D1329C841ED00B42A3B /* Helper.m */,
+				D6AA4D1229C841DF00B42A3B /* Helper.h */,
 				D6AA4D1029C5C3E600B42A3B /* ParsingResult.m */,
 				D6AA4D0F29C5C37E00B42A3B /* ParsingResult.h */,
 				D6AA4D0D29C5C32200B42A3B /* SensorAdvertisementFrame.m */,
@@ -279,6 +284,7 @@
 				D6AA4D0929C47AF300B42A3B /* Parser.m in Sources */,
 				D6AA4D0E29C5C32200B42A3B /* SensorAdvertisementFrame.m in Sources */,
 				D6AA4D1129C5C3E600B42A3B /* ParsingResult.m in Sources */,
+				D6AA4D1429C841ED00B42A3B /* Helper.m in Sources */,
 				D6AA4D0A29C47AF300B42A3B /* Parser-Bridging-Header.h in Sources */,
 				D6AA4D0B29C47AF300B42A3B /* Parser.h in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,

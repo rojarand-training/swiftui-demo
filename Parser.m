@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Parser.h"
+#import "Helper.h"
 
 @implementation Parser
 
@@ -70,20 +71,13 @@
 
 
 + (void)misc {
-   // NSString *res1 = [self isValid:@"aabbcc"];
-//    NSString *res1 = [self isValid:@"abcc"];
-//    NSLog(@"res1: %@", res1);
     
-    
-    NSString *res2 = [self isValid:@"abccc"];
-    NSLog(@"res2: %@", res2);
-
-    NSString *res3 = [self isValid:@"abccdzz"];
-    NSLog(@"res3: %@", res3);
-    
-    
+    DeviceTelemetry* dev = [[DeviceTelemetry alloc]init];
+    [dev runTest];
+    /*
     NSString *res4 = [self isValid:@"aabbc"];
     NSLog(@"res4: %@", res4);
+     */
 }
 
 + (NSString *) isValid:(NSString *)s {
