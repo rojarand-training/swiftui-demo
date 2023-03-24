@@ -11,7 +11,11 @@ import CoreData
 struct ContentView: View {
 
     var body: some View {
-        Text("Hello World")
+        NavigationStack {
+            NavigationLink("Show a video in the browser") {
+                WebView()
+            }
+        }
     }
 }
 
