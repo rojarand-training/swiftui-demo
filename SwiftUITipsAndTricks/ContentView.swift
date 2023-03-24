@@ -88,13 +88,14 @@ final class CountriesViewModel: ObservableObject {
     
     init(interval: TimeInterval = 0.8, countriesService: CountriesServiceType = DefaultCountriesService()) {
         cancellable = $searchToken
-            .filter { token in token.count >= 3 }
             .debounce(for: .seconds(interval), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .filter { token in token.count >= 3 }
             .handleEvents(receiveOutput: { output in
+                print("Loads with3: \(output)")
                 self.loadStatus = .loading
             })
             .subscribe(on: DispatchQueue.global())
-            .removeDuplicates()
             .map { token in countriesService.loadCountries(withToken: token) }
             .switchToLatest()
             .receive(on: DispatchQueue.main)
