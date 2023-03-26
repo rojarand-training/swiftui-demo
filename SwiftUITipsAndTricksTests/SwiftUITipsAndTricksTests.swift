@@ -110,62 +110,119 @@ final class SwiftUITipsAndTricksTests: XCTestCase {
 
         //act
         viewModel.searchToken = "many"//again call for many
-        
-        let expectation = self.expectation(description: "Awaiting for load results")
        
-        var receivedStatuses: [LoadStatus]? = nil
-        let cancellable = publisher
-            .timeout(.seconds(1), scheduler: DispatchQueue.global())
-            .sink { completion in expectation.fulfill() }
-            receiveValue: { statuses in receivedStatuses = statuses }
-        
-        waitForExpectations(timeout: 2.0)
-        XCTAssertNil(receivedStatuses)
-        XCTAssertNotNil(cancellable)
+        let result = receiveResult(from: publisher, withTimeout: 1)
+        //let result = publisher.awaitResult(withTimeout: 1)
+        XCTAssertTrue(result.isTimeout)
     }
     
+    func test_load_multiple_times_for_different_tokens() throws {
+        
+        //arrange
+        let countriesService = countryService(loading: ["Poland", "Germany", "England"])
+        let viewModel = CountriesViewModel(interval: 0.0, countriesService: countriesService)
+        let publisher = viewModel.$loadStatus.statusPublisher()
+        
+        //act
+
+        ["Pola", "Polan", "Poland"].forEach { token in
+            viewModel.searchToken = token
+            //let result = publisher.awaitResult(withTimeout: 1)
+            let result = receiveResult(from: publisher, withTimeout: 1)
+            XCTAssertTrue(result.isSuccess)
+        }
+    }
+}
+
+enum AwaitResult<T>{
+    case success(T)
+    case timeout
+    case failure(Error)
+}
+
+extension AwaitResult {
+    var isSuccess: Bool {
+        if case .success(_) = self {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    var isTimeout: Bool {
+        if case .timeout = self {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+extension Publisher {
+    //Does not work. Does not receive results
+    func awaitResult(withTimeout timeout: TimeInterval) -> AwaitResult<Output> {
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        var receivedResult: Output?
+        var receivedError: Error?
+        let cancellable = self.timeout(.seconds(timeout), scheduler: DispatchQueue.global())
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    receivedError = error
+                }
+                semaphore.signal()
+            } receiveValue: { result in
+                receivedResult = result
+            }
+       
+        let res = semaphore.wait(timeout: .now()+(timeout*2))
+        NSLog("RES:\(res)")
+        cancellable.cancel()
+        
+        if let receivedError {
+            return .failure(receivedError)
+        } else if let receivedResult {
+            return .success(receivedResult)
+        } else {
+            return .timeout
+        }
+    }
 }
 
 extension XCTestCase {
     
-    func awaitPublisher1<T: Publisher>(
-        _ publisher: T,
-        timeout: TimeInterval = 10,
-        file: StaticString = #file,
-        line: UInt = #line
-    ) throws -> T.Output? {
-        // This time, we use Swift's Result type to keep track
-        // of the result of our Combine pipeline:
-        var result: Result<T.Output, Error>?
-        let expectation = self.expectation(description: "Awaiting publisher")
+    func receiveResult<T: Publisher>(
+        from publisher: T,
+        withTimeout timeout: TimeInterval = 10
+    ) -> AwaitResult<T.Output> {
         
-        let cancellable = publisher.sink(
-            receiveCompletion: { completion in
+        let expectation = self.expectation(description: "Awaiting for load results")
+        var receivedResult: T.Output?
+        var receivedError: Error?
+        let cancellable = publisher
+            .timeout(.seconds(timeout), scheduler: DispatchQueue.global())
+            .sink { completion in
                 switch completion {
-                case .failure(let error):
-                    result = .failure(error)
                 case .finished:
-                    break
+                    expectation.fulfill()
+                case .failure(let error):
+                    receivedError = error
+                    expectation.fulfill()
                 }
-                
-                expectation.fulfill()
-            },
-            receiveValue: { value in
-                result = .success(value)
+            } receiveValue: { result in
+                receivedResult = result
             }
-        )
         
-        // Just like before, we await the expectation that we
-        // created at the top of our test, and once done, we
-        // also cancel our cancellable to avoid getting any
-        // unused variable warnings:
-        waitForExpectations(timeout: timeout)
+        waitForExpectations(timeout: timeout*2)
         cancellable.cancel()
         
-        // Here we pass the original file and line number that
-        // our utility was called at, to tell XCTest to report
-        // any encountered errors at that original call site:
-        return try result?.get()
+        if let receivedError {
+            return .failure(receivedError)
+        } else if let receivedResult {
+            return .success(receivedResult)
+        } else {
+            return .timeout
+        }
     }
     
     func awaitPublisher<T: Publisher>(
