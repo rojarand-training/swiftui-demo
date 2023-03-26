@@ -1,12 +1,18 @@
-## Text example
+## [Call as function](https://www.swiftbysundell.com/articles/exploring-swift-5-2s-new-functional-features/) 
 
 ```swift
-struct ContentView: View {
+struct FullName {
+    let value: String
+}
 
-    var body: some View {
-        Text("Hello World")
+extension FullName {
+    func callAsFunction() -> String {
+        self.value
     }
 }
+
+let initializedFullName: FullName(value: "robert andrzejczyk")
+initializedFullName() <<<<------
 ```
 
 <img src="preview.png" width="40%" >

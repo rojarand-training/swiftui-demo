@@ -8,10 +8,38 @@
 import SwiftUI
 import CoreData
 
+struct FullName {
+    let value: String
+}
+
+extension FullName: ExpressibleByStringLiteral {
+    init(stringLiteral value: String) {
+        self.value = value.capitalized
+    }
+}
+
+extension FullName: ExpressibleByNilLiteral {
+    init(nilLiteral: ()) {
+        self.value = "Unknown name"
+    }
+}
+
+extension FullName {
+    func callAsFunction() -> String {
+        self.value
+    }
+}
+
 struct ContentView: View {
 
+    let initializedFullName: FullName = "robert andrzejczyk"
+    let emptyFullName: FullName = nil
+    
     var body: some View {
-        Text("Hello World")
+        VStack {
+            Text("Hello: \(initializedFullName())")
+            Text("Hello: \(emptyFullName())")
+        }
     }
 }
 
