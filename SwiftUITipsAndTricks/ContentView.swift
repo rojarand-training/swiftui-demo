@@ -8,6 +8,14 @@
 import SwiftUI
 import CoreData
 
+extension View {
+ 
+    func debug() -> Self {
+        print(Mirror(reflecting: self).subjectType)
+        return self
+    }
+ 
+}
 
 final class ContentViewModel: ObservableObject {
     @Published var value1: Int = 0
@@ -64,7 +72,7 @@ struct ContentView: View {
                     Text("Value2: \(viewModel.value2)")
                 }
             }
-        }
+        }.debug()
     }
     
 }
