@@ -1,12 +1,6 @@
-## Text example
+## [Promise/Future - under the hood](https://www.swiftbysundell.com/articles/under-the-hood-of-futures-and-promises-in-swift/)
 
 ```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
 ```
 
 <img src="preview.png" width="40%" >
