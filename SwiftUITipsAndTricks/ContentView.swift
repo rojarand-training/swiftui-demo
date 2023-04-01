@@ -32,10 +32,48 @@ class Future<Value> {
     }
     
     private func report(result: Result) {
+        NSLog("Number of callbacks: %d", callbacks.count)
         callbacks.forEach { callback in
             callback(result)
         }
         callbacks = []
+    }
+    
+    func chained<T>(callback: @escaping (Value)->Future<T>) -> Future<T> {
+        let promise = Promise<T>()
+        observe { result in
+            switch result {
+            case .success(let value):
+                let future = callback(value)
+                future.observe { result in
+                    switch result {
+                    case .success(let value):
+                        promise.resolve(value)
+                    case .failure(let error):
+                        promise.reject(error)
+                    }
+                }
+            case .failure(let error):
+                promise.reject(error)
+            }
+        }
+        return promise
+    }
+    
+    func decoded<T>(type: T.Type, using decoder: JSONDecoder = .init()) -> Future<T> where Value == Data, T: Decodable {
+        
+        chained { value in
+            let promise = Promise<T>()
+            DispatchQueue.global().async {
+                do {
+                    promise.resolve(try decoder.decode(type, from: value))
+                } catch {
+                    promise.reject(error)
+                }
+            }
+            return promise
+        }
+        
     }
 }
 
@@ -50,6 +88,22 @@ class Promise<Value>: Future<Value> {
 }
 
 extension URLSession {
+    func request(for url: URL) -> Future<Data> {
+        
+        let promise = Promise<Data>()
+        let task = dataTask(with: url) { data, urlResponse, error in
+            if let error {
+                promise.reject(error)
+            } else {
+                promise.resolve(data ?? Data())
+            }
+        }
+        defer {
+            task.resume()
+        }
+        return promise
+    }
+    
     func load<D: Decodable>(for url: URL) -> Future<D> {
         
         let promise = Promise<D>()
@@ -78,15 +132,31 @@ final class ContentViewModel: ObservableObject {
     
     func loadCountries() {
         let url = URL(string: "https://restcountries.com/v2/all")!
-        let future: Future<Countries> = URLSession.shared.load(for: url)
-        future.observe { result in
-            switch result {
-            case .success(let countries):
-                DispatchQueue.main.async {
-                    self.countries = countries
+        
+        if Int.random(in: 1...10) % 2 == 0 {
+            URLSession.shared.request(for: url)
+                .decoded(type: Countries.self)
+                .observe { result in
+                    switch result {
+                    case .success(let countries):
+                        DispatchQueue.main.async {
+                            self.countries = countries
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
-            case .failure(let error):
-                print(error)
+        } else {
+            let future: Future<Countries> = URLSession.shared.load(for: url)
+            future.observe { result in
+                switch result {
+                case .success(let countries):
+                    DispatchQueue.main.async {
+                        self.countries = countries
+                    }
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
@@ -97,7 +167,11 @@ struct ContentView: View {
     @StateObject private var vm = ContentViewModel()
     
     var body: some View {
-        VStack {
+        _body()
+    }
+    
+    private func _body() -> some View {
+        return VStack {
             Button("Load countries") {
                 vm.loadCountries()
             }
