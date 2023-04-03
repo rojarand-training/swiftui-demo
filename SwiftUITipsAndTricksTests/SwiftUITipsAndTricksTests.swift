@@ -101,7 +101,7 @@ final class SwiftUITipsAndTricksTests: XCTestCase {
         
         //arrange
         let countriesService = countryService(loading: ["Poland", "Germany", "England"])
-        let viewModel = CountriesViewModel(interval: 0.0, countriesService: countriesService)
+        let viewModel = CountriesViewModel(interval: 0.1, countriesService: countriesService)
         let publisher = viewModel.$loadStatus.statusPublisher()
         
         //act
@@ -116,19 +116,19 @@ final class SwiftUITipsAndTricksTests: XCTestCase {
         XCTAssertTrue(result.isTimeout)
     }
     
-    func test_load_multiple_times_for_different_tokens() throws {
+    func test_load_multiple_times_for_different_tokens() async throws {
         
         //arrange
         let countriesService = countryService(loading: ["Poland", "Germany", "England"])
-        let viewModel = CountriesViewModel(interval: 0.0, countriesService: countriesService)
+        //we need at least minimal interval because publisher can emit when searchToken is assigned and nothing will observe/wait for result
+        let viewModel = CountriesViewModel(interval: 0.1, countriesService: countriesService)
         let publisher = viewModel.$loadStatus.statusPublisher()
         
         //act
-
         ["Pola", "Polan", "Poland"].forEach { token in
             viewModel.searchToken = token
-            //let result = publisher.awaitResult(withTimeout: 1)
-            let result = receiveResult(from: publisher, withTimeout: 1)
+            let result = publisher.awaitResult(withTimeout: 1)
+            //assert
             XCTAssertTrue(result.isSuccess)
         }
     }
@@ -158,9 +158,12 @@ extension AwaitResult {
     }
 }
 
-extension Publisher {
+extension Publisher {   
     //Does not work. Does not receive results
     func awaitResult(withTimeout timeout: TimeInterval) -> AwaitResult<Output> {
+        
+        let token = Int.random(in: 1...1000)
+        NSLog("Will wait token: \(token)")
         
         let semaphore = DispatchSemaphore(value: 0)
         var receivedResult: Output?
@@ -170,20 +173,27 @@ extension Publisher {
                 if case .failure(let error) = completion {
                     receivedError = error
                 }
+                NSLog("RES:completion received \(token)")
                 semaphore.signal()
             } receiveValue: { result in
+                NSLog("RES:result received \(token)")
                 receivedResult = result
+                semaphore.signal()
             }
        
-        let res = semaphore.wait(timeout: .now()+(timeout*2))
-        NSLog("RES:\(res)")
+        _ = semaphore.wait(timeout: .now()+(timeout))
         cancellable.cancel()
         
+        NSLog("Did wait token: \(token)")
+        
         if let receivedError {
+            NSLog("RES:failure")
             return .failure(receivedError)
         } else if let receivedResult {
+            NSLog("RES:success")
             return .success(receivedResult)
         } else {
+            NSLog("RES:timeout")
             return .timeout
         }
     }
