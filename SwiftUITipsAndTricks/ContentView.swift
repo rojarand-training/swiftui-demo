@@ -6,108 +6,7 @@
 //
 
 import SwiftUI
-import Combine
 
-struct Country: Decodable {
-    let name: String
-}
-
-typealias Countries = [Country]
-
-enum LoadStatus {
-    case notLoaded
-    case loading
-    case loaded(Countries)
-    case failure(Error)
-}
-
-protocol CountriesServiceType {
-    func loadCountries(withToken token: String) -> AnyPublisher<Countries, Error>
-}
-
-extension Array where Element == Country {
-    func with(tokenInName token: String) -> Countries {
-        let lowercasedToken = token.lowercased()
-        return filter { country in
-            country.name.lowercased().contains(lowercasedToken)
-        }
-    }
-}
-
-final class DefaultCountriesService: CountriesServiceType {
-    
-    private var cachedCountries: Countries
-    
-    init(cachedCountries: Countries = Countries()) {
-        self.cachedCountries = cachedCountries
-    }
-    
-    func loadCountries(withToken token: String) -> AnyPublisher<Countries, Error> {
-        return countryPublisher()
-            .map { countries in
-                countries.with(tokenInName: token)
-            }
-            .eraseToAnyPublisher()
-    }
-    
-    private func countryPublisher() -> AnyPublisher<Countries, Error> {
-        if !cachedCountries.isEmpty {
-            return cachedCountriesPublisher
-        } else {
-            return networkCountriesPublisher
-        }
-    }
-    
-    private var cachedCountriesPublisher: AnyPublisher<Countries, Error> {
-        cachedCountries.publisher
-            .collect()
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
-    
-    private var networkCountriesPublisher: AnyPublisher<Countries, Error> {
-        guard let url = URL(string: "https://restcountries.com/v2/all") else {
-            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
-        }
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: Countries.self, decoder: JSONDecoder())
-            .handleEvents(receiveOutput: { countries in
-                self.cachedCountries = countries
-            })
-            .eraseToAnyPublisher()
-    }
-}
-
-final class CountriesViewModel: ObservableObject {
-    
-    @Published var searchToken = ""
-    @Published private(set) var loadStatus: LoadStatus = .notLoaded
-    
-    private var cancellable: AnyCancellable?
-    
-    init(interval: TimeInterval = 0.8, countriesService: CountriesServiceType = DefaultCountriesService()) {
-        cancellable = $searchToken
-            .debounce(for: .seconds(interval), scheduler: DispatchQueue.main)
-            .removeDuplicates()
-            .filter { token in token.count >= 3 }
-            .handleEvents(receiveOutput: { output in
-                print("Loads with3: \(output)")
-                self.loadStatus = .loading
-            })
-            .subscribe(on: DispatchQueue.global())
-            .map { token in countriesService.loadCountries(withToken: token) }
-            .switchToLatest()
-            .receive(on: DispatchQueue.main)
-            .sink { receiveCompletion in
-                if case .failure(let error) = receiveCompletion {
-                    self.loadStatus = .failure(error)
-                }
-            } receiveValue: { countries in
-                self.loadStatus = .loaded(countries)
-            }
-    }
-}
 
 struct CountriesView: View {
     
@@ -118,7 +17,26 @@ struct CountriesView: View {
             switch viewModel.loadStatus {
             case .loaded(let countries):
                 List(countries, id: \.name) { country in
-                    Text(country.name)
+                    HStack {
+                        if let flagData = viewModel.flagImage(for: country.name),
+                            let flag = UIImage(data: flagData) {
+                            Image(uiImage: flag)
+                                .resizable()
+                                .frame(width: 80, height: 60)
+                        }
+                        /*if let flagImage = country.flagImage {
+                            Image(uiImage: flagImage)
+                                .resizable()
+                                .frame(width: 80, height: 60)
+                        }*/
+                        Text(country.name)
+                    }
+                    .onAppear {
+                        NSLog("Apperead \(country.name)")
+                    }
+                    .onDisappear {
+                        NSLog("Dispperead \(country.name)")
+                    }
                 }
             case .failure(let error):
                 Text(error.localizedDescription)

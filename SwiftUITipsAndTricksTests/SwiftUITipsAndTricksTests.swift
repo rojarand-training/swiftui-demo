@@ -35,11 +35,17 @@ extension Combine.Published<LoadStatus>.Publisher {
     }
 }
 
+extension FlagURLs {
+    static var empty: FlagURLs {
+        FlagURLs(png: "", svg: "")
+    }
+}
+
 extension Array where Element == LoadStatus {
     var countries: Countries? {
         self.reduce(nil) { partialResult, loadStatus in
-            if case .loaded(let countries) = loadStatus {
-                return countries
+            if case .loaded(let countryViewsData) = loadStatus {
+                return countryViewsData
             } else {
                 return partialResult
             }
@@ -50,7 +56,7 @@ extension Array where Element == LoadStatus {
 
 extension Array where Element == String {
     var countries: Countries {
-        map { name in Country(name: name) }
+        map { name in Country(name: name, flags: .empty) }
     }
 }
 
@@ -60,10 +66,16 @@ extension Array where Element == Country {
     }
 }
 
+extension Array where Element == CountryViewData {
+    var names: [String] {
+        map { country in country.name }
+    }
+}
+
 final class SwiftUITipsAndTricksTests: XCTestCase {
     
     func countryService(loading countryNames: [String]) -> CountriesServiceType {
-        DefaultCountriesService(cachedCountries: countryNames.map { Country(name: $0) })
+        DefaultCountriesService(cachedCountries: countryNames.map { Country(name: $0, flags: .empty) })
     }
     
     func test_loads_countries_contianing_token_in_name() throws {
@@ -129,7 +141,7 @@ final class SwiftUITipsAndTricksTests: XCTestCase {
             viewModel.searchToken = token
             let result = publisher.awaitResult(withTimeout: 1)
             //assert
-            XCTAssertTrue(result.isSuccess)
+            XCTAssertTrue(result.isSuccess, "assas")
         }
     }
 }

@@ -14,6 +14,10 @@
 		D618CB78295ED24100601356 /* SwiftUITipsAndTricksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB77295ED24100601356 /* SwiftUITipsAndTricksTests.swift */; };
 		D618CB82295ED24100601356 /* SwiftUITipsAndTricksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */; };
 		D618CB84295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */; };
+		D652DC9A29DD3D8B00ACA48F /* CountriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D652DC9929DD3D8B00ACA48F /* CountriesService.swift */; };
+		D652DC9C29DD430B00ACA48F /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D652DC9B29DD430B00ACA48F /* CountryModel.swift */; };
+		D652DC9E29DD442100ACA48F /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D652DC9D29DD442100ACA48F /* CountriesViewModel.swift */; };
+		D652DCA029DD44D200ACA48F /* CountryViewDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D652DC9F29DD44D200ACA48F /* CountryViewDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		D618CB7D295ED24100601356 /* SwiftUITipsAndTricksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUITipsAndTricksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB81295ED24100601356 /* SwiftUITipsAndTricksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITests.swift; sourceTree = "<group>"; };
 		D618CB83295ED24100601356 /* SwiftUITipsAndTricksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D652DC9929DD3D8B00ACA48F /* CountriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesService.swift; sourceTree = "<group>"; };
+		D652DC9B29DD430B00ACA48F /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		D652DC9D29DD442100ACA48F /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
+		D652DC9F29DD44D200ACA48F /* CountryViewDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,10 @@
 				D618CB63295ED24000601356 /* ContentView.swift */,
 				D618CB65295ED24000601356 /* Assets.xcassets */,
 				D618CB67295ED24000601356 /* Preview Content */,
+				D652DC9929DD3D8B00ACA48F /* CountriesService.swift */,
+				D652DC9B29DD430B00ACA48F /* CountryModel.swift */,
+				D652DC9D29DD442100ACA48F /* CountriesViewModel.swift */,
+				D652DC9F29DD44D200ACA48F /* CountryViewDataService.swift */,
 			);
 			path = SwiftUITipsAndTricks;
 			sourceTree = "<group>";
@@ -258,7 +270,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
+				D652DCA029DD44D200ACA48F /* CountryViewDataService.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
+				D652DC9C29DD430B00ACA48F /* CountryModel.swift in Sources */,
+				D652DC9E29DD442100ACA48F /* CountriesViewModel.swift in Sources */,
+				D652DC9A29DD3D8B00ACA48F /* CountriesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
