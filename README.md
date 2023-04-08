@@ -1,5 +1,7 @@
 ## [Text concatenation  with mixed styling in SwiftUI](https://www.swiftbysundell.com/questions/swiftui-text-mixed-styles/)
 
+https://www.hackingwithswift.com/quick-start/swiftui/how-to-format-text-inside-text-views
+
 ```swift
 struct ContentView: View {
     
