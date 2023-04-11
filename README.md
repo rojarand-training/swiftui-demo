@@ -1,12 +1,25 @@
-## Text example
+## [Defining custom patterns](https://www.swiftbysundell.com/articles/defining-custom-patterns-in-swift/)
 
 ```swift
-struct ContentView: View {
+func ~=<T>(lhs: KeyPath<T, Bool>, rhs: T?) -> Bool {
+    rhs?[keyPath: lhs] ?? false
+}
 
-    var body: some View {
-        Text("Hello World")
+func testExample() throws {
+    
+    let text = "Some text"
+    switch text.first {
+    case \.isNumber:
+        print("Number")
+        break
+    case \.isLetter:
+        print("Letter")
+        break
+    default:
+        print("No number, no letter")
+        break
+
     }
 }
 ```
 
-<img src="preview.png" width="40%" >
