@@ -1,12 +1,3 @@
-## Text example
-
-```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
+## [Formatting text](https://www.hackingwithswift.com/quick-start/swiftui/how-to-format-text-inside-text-views)
 
 <img src="preview.png" width="40%" >
