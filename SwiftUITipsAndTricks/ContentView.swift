@@ -9,9 +9,38 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
+    
     var body: some View {
-        Text("Hello World")
+        PersonalInfoView()
+            .environment(\.redactionReasons, .privacy)
+    }
+}
+
+struct PersonalInfoView: View {
+    
+    @Environment(\.redactionReasons) var redactionReasons
+    var body: some View {
+        
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Sex orientation: ")
+                Text("Gay")
+                    .privacySensitive()
+            }
+            HStack {
+                Text("Card number: ")
+                Text("1234-4567-8901-2345-6789")
+                    .privacySensitive()
+            }
+            HStack {
+                Text("ID: ")
+                if redactionReasons.contains(.privacy) {
+                    Text("[HIDDEN]")
+                } else {
+                    Text("CDA 98765432")
+                }
+            }
+        }
     }
 }
 
