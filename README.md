@@ -1,12 +1,3 @@
-## Text example
+## [Show how to apply gradient](https://www.hackingwithswift.com/quick-start/swiftui/how-to-render-a-gradient)
 
-```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+<img src="preview.gif" width="40%" >
