@@ -8,10 +8,19 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
 
+struct ContentView: View {
+    
     var body: some View {
-        Text("Hello World")
+        ViewThatFits {
+            Label("Welcome to AwsomeApp hahaahaha", systemImage: "bolt.shield")
+                .font(.largeTitle)
+            
+            Label("Hello again", systemImage: "bolt.shield")
+                .font(.largeTitle)
+            
+            Label("Hello", systemImage: "bolt.shield")
+        }
     }
 }
 
