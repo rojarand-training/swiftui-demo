@@ -8,6 +8,29 @@
 import XCTest
 @testable import SwiftUITipsAndTricks
 
+struct FileDescriptorWrapper: ~Copyable {
+    private let fd: FileDescriptor
+    init(_ fd: Int) {
+        self.fd = FileDescriptor(fd)
+    }
+    
+    func write(bytes: [Int8]) {
+        fd.write(bytes: bytes)
+    }
+    
+    /*
+    consuming func close() {
+        fd.close()
+        //discard self
+    }*/
+    /*
+    deinit {
+        fd.close()
+    }
+   	*/
+}
+
+
 final class SwiftUITipsAndTricksTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -18,14 +41,18 @@ final class SwiftUITipsAndTricksTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_use_write_after_consuming_close() throws {
+        let fileDescriptor = FileDescriptor(Int.random(in: 1...Int.max))
+        fileDescriptor.close()
+        //fileDescriptor.write(bytes: [1,2,3])
     }
-
+    
+    func test_use_write_after_consuming_close2() throws {
+        let fileDescriptor = FileDescriptorWrapper(Int.random(in: 1...Int.max))
+        fileDescriptor.write(bytes: [1,2,3])
+        ///fileDescriptor.close()
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
