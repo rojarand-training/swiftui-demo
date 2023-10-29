@@ -8,10 +8,64 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct TextCapitalizationTrait: UITraitDefinition {
+    static var defaultValue = false
+}
 
-    var body: some View {
-        Text("Hello World")
+extension UITraitCollection {
+    var useBoldText: Bool {
+        get {
+            self[TextCapitalizationTrait.self]
+        }
+    }
+}
+
+extension UIMutableTraits {
+    var useBoldText: Bool {
+        get {
+            self[TextCapitalizationTrait.self]
+        }
+        set {
+            self[TextCapitalizationTrait.self] = newValue
+        }
+    }
+}
+
+class MyLabel: UILabel {
+    override var text: String? {
+        get { super.text }
+        set {
+            super.text = traitCollection.useBoldText ? newValue?.uppercased() : newValue
+        }
+    }
+}
+
+class MyViewController: UIViewController {
+    
+    private let label = MyLabel()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(label)
+        NSLayoutConstraint.activate(
+            [label.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0)]
+        )
+        traitOverrides.useBoldText = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        label.text = "Hello"
+    }
+}
+
+struct ContentView: UIViewControllerRepresentable {
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        MyViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 }
 
