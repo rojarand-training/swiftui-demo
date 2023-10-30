@@ -8,10 +8,33 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+class VC: UIViewController {
+    
+    override func viewDidLoad() {
+        let blueBackgroundView = UIView(frame: self.view.bounds)
+        blueBackgroundView.backgroundColor = .blue
+        blueBackgroundView.translatesAutoresizingMaskIntoConstraints = true
+        blueBackgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blueBackgroundView)
+        
+        let redForegroundView = UIView(frame: self.view.bounds)
+        redForegroundView.backgroundColor = .red
+        redForegroundView.translatesAutoresizingMaskIntoConstraints = true
+        view.addSubview(redForegroundView)
 
-    var body: some View {
-        Text("Hello World")
+        super.viewDidLoad()
+    }
+    
+}
+
+struct ContentView: UIViewControllerRepresentable {
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        VC()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
     }
 }
 
