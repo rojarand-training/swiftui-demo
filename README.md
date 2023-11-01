@@ -1,12 +1,5 @@
-## Text example
+## [UINavigationItem](https://developer.apple.com/documentation/uikit/uinavigationitem)
 
-```swift
-struct ContentView: View {
+UINavigationItem object contains the buttons and views you want to display in the navigation bar.
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+<img src="preview.gif" width="40%" >
