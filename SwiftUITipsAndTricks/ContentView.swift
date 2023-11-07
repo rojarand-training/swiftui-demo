@@ -8,10 +8,20 @@
 import SwiftUI
 import CoreData
 
+@available(iOS 15, *)
 struct ContentView: View {
-
     var body: some View {
-        Text("Hello World")
+        if #available(iOS 16, *) {
+            Text("Hello, you are running iOS 16 or newer")
+        } else {
+            Text("Hello, you are running iOS 15 or older")
+        }
+        
+        if #unavailable(iOS 16) {
+            Text("Hello, you are running iOS 15 or older")
+        } else {
+            Text("Hello, you are running iOS 16 or newer")
+        }
     }
 }
 
