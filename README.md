@@ -1,19 +1,28 @@
-## Text example
-TODO:
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
+## [type(of:)](https://developer.apple.com/documentation/swift/type(of:))
 
 ```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
+class Smiley {
+    class var text: String {
+        return ":)"
     }
 }
+
+
+class EmojiSmiley: Smiley {
+     override class var text: String {
+        return "😀"
+    }
+}
+
+
+func printSmileyInfo(_ value: Smiley) {
+    let smileyType = type(of: value)
+    print("Smile!", smileyType.text)
+}
+
+
+let emojiSmiley = EmojiSmiley()
+printSmileyInfo(emojiSmiley)
+// Smile! 😀
 ```
 
-<img src="preview.png" width="40%" >
