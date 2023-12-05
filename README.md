@@ -1,23 +1,6 @@
-## Text example
-TODO:
-- Review of libraries
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
-- Redacted mode for UIKit
-- Drawing exclusion path (wrapping text)
-- UIKit Embed button on the bottom part of a scroll view
+## Show how to wrap text around eq. image
 
-```swift
-struct ContentView: View {
+https://stackoverflow.com/questions/22580859/exclusion-paths-on-a-uilabels-textcontainer
 
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
 
 <img src="preview.png" width="40%" >
