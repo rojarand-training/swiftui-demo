@@ -1,23 +1,9 @@
-## Text example
-TODO:
-- Review of libraries
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
-- Redacted mode for UIKit
-- Drawing exclusion path (wrapping text)
-- UIKit Embed button on the bottom part of a scroll view
+## Show how to implement ScrollView with content for entire screen eg for a bottom button.  
 
-```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
+The trick is that an internal content view inside a ScrollView must have 6 (SIC!) constraints to the ScrollView. The height constraint should have lower priority than 1000 (max). In our case 250. 
 
 <img src="preview.png" width="40%" >
+
+
+
+<img src="preview.gif" width="40%" >

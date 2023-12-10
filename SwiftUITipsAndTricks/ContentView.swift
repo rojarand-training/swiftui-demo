@@ -8,10 +8,13 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView: UIViewControllerRepresentable {
 
-    var body: some View {
-        Text("Hello World")
+    func makeUIViewController(context: Context) -> some UIViewController {
+        SBViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 }
 
