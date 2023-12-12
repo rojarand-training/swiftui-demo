@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81BCA6BB2B27364E00D90AAE /* TravelTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA6BA2B27364E00D90AAE /* TravelTimeView.swift */; };
+		81BCA6BD2B288CD700D90AAE /* TravelTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA6BC2B288CD700D90AAE /* TravelTimeViewModel.swift */; };
+		81BCA6BF2B2996A500D90AAE /* TravelTimeCalculationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA6BE2B2996A500D90AAE /* TravelTimeCalculationService.swift */; };
+		81BCA6C12B29D29600D90AAE /* AddressSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA6C02B29D29600D90AAE /* AddressSuggestionView.swift */; };
+		81BCA6C32B29D2A100D90AAE /* AddressSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA6C22B29D2A100D90AAE /* AddressSuggestionViewModel.swift */; };
+		81BCA6C92B2ACA8A00D90AAE /* LocationCompleterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BCA6C82B2ACA8A00D90AAE /* LocationCompleterService.swift */; };
 		D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */; };
 		D618CB64295ED24000601356 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB63295ED24000601356 /* ContentView.swift */; };
 		D618CB66295ED24000601356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D618CB65295ED24000601356 /* Assets.xcassets */; };
@@ -34,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81BCA6BA2B27364E00D90AAE /* TravelTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimeView.swift; sourceTree = "<group>"; };
+		81BCA6BC2B288CD700D90AAE /* TravelTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimeViewModel.swift; sourceTree = "<group>"; };
+		81BCA6BE2B2996A500D90AAE /* TravelTimeCalculationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimeCalculationService.swift; sourceTree = "<group>"; };
+		81BCA6C02B29D29600D90AAE /* AddressSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSuggestionView.swift; sourceTree = "<group>"; };
+		81BCA6C22B29D2A100D90AAE /* AddressSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSuggestionViewModel.swift; sourceTree = "<group>"; };
+		81BCA6C82B2ACA8A00D90AAE /* LocationCompleterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCompleterService.swift; sourceTree = "<group>"; };
 		D618CB5E295ED24000601356 /* SwiftUITipsAndTricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITipsAndTricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksApp.swift; sourceTree = "<group>"; };
 		D618CB63295ED24000601356 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +110,12 @@
 				D618CB63295ED24000601356 /* ContentView.swift */,
 				D618CB65295ED24000601356 /* Assets.xcassets */,
 				D618CB67295ED24000601356 /* Preview Content */,
+				81BCA6BC2B288CD700D90AAE /* TravelTimeViewModel.swift */,
+				81BCA6BA2B27364E00D90AAE /* TravelTimeView.swift */,
+				81BCA6BE2B2996A500D90AAE /* TravelTimeCalculationService.swift */,
+				81BCA6C02B29D29600D90AAE /* AddressSuggestionView.swift */,
+				81BCA6C22B29D2A100D90AAE /* AddressSuggestionViewModel.swift */,
+				81BCA6C82B2ACA8A00D90AAE /* LocationCompleterService.swift */,
 			);
 			path = SwiftUITipsAndTricks;
 			sourceTree = "<group>";
@@ -257,8 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81BCA6BB2B27364E00D90AAE /* TravelTimeView.swift in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
+				81BCA6C32B29D2A100D90AAE /* AddressSuggestionViewModel.swift in Sources */,
+				81BCA6BF2B2996A500D90AAE /* TravelTimeCalculationService.swift in Sources */,
+				81BCA6C12B29D29600D90AAE /* AddressSuggestionView.swift in Sources */,
+				81BCA6C92B2ACA8A00D90AAE /* LocationCompleterService.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
+				81BCA6BD2B288CD700D90AAE /* TravelTimeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
