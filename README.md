@@ -1,23 +1,3 @@
-## Text example
-TODO:
-- Review of libraries
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
-- Redacted mode for UIKit
-- Drawing exclusion path (wrapping text)
-- UIKit Embed button on the bottom part of a scroll view
+## UI test example
 
-```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+https://www.youtube.com/watch?v=uwpUQIUmw2g&list=PLyJFUZ2pU5WStf1_uwKK-KJPQ3fQRdD-P&index=33&t=566s
