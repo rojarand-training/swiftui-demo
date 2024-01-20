@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27C0B9652B5A43C200F3D7D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0B9642B5A43C200F3D7D4 /* AppDelegate.swift */; };
+		27C0B9672B5A43F900F3D7D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C0B9662B5A43F900F3D7D4 /* SceneDelegate.swift */; };
 		D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */; };
 		D618CB64295ED24000601356 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB63295ED24000601356 /* ContentView.swift */; };
 		D618CB66295ED24000601356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D618CB65295ED24000601356 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27C0B9642B5A43C200F3D7D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27C0B9662B5A43F900F3D7D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D618CB5E295ED24000601356 /* SwiftUITipsAndTricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITipsAndTricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksApp.swift; sourceTree = "<group>"; };
 		D618CB63295ED24000601356 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				D618CB63295ED24000601356 /* ContentView.swift */,
 				D618CB65295ED24000601356 /* Assets.xcassets */,
 				D618CB67295ED24000601356 /* Preview Content */,
+				27C0B9642B5A43C200F3D7D4 /* AppDelegate.swift */,
+				27C0B9662B5A43F900F3D7D4 /* SceneDelegate.swift */,
 			);
 			path = SwiftUITipsAndTricks;
 			sourceTree = "<group>";
@@ -257,8 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C0B9652B5A43C200F3D7D4 /* AppDelegate.swift in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
+				27C0B9672B5A43F900F3D7D4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

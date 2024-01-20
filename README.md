@@ -1,23 +1,44 @@
-## Text example
-TODO:
-- Review of libraries
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
-- Redacted mode for UIKit
-- Drawing exclusion path (wrapping text)
-- UIKit Embed button on the bottom part of a scroll view
+## How to create snapshot and smooth transition between view controllers/windows
 
 ```swift
-struct ContentView: View {
+func snapshot() -> UIImage? {
+    UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+    drawHierarchy(in: bounds, afterScreenUpdates: true)
+    let result = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return result
+}
 
-    var body: some View {
-        Text("Hello World")
+
+extension UIWindow {
+    func replaceRootViewControllerWith(_ replacementController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        let snapshotImageView = UIImageView(image: self.snapshot())
+        self.addSubview(snapshotImageView)
+
+        let dismissCompletion = { () -> Void in // dismiss all modal view controllers
+            self.rootViewController = replacementController
+            self.bringSubviewToFront(snapshotImageView)
+            if animated {
+                UIView.animate(withDuration: 0.8, animations: { () -> Void in
+                    snapshotImageView.alpha = 0
+                }, completion: { (success) -> Void in
+                    snapshotImageView.removeFromSuperview()
+                    completion?()
+                })
+            }
+            else {
+                snapshotImageView.removeFromSuperview()
+                completion?()
+            }
+        }
+        if self.rootViewController!.presentedViewController != nil {
+            self.rootViewController!.dismiss(animated: false, completion: dismissCompletion)
+        }
+        else {
+            dismissCompletion()
+        }
     }
 }
 ```
 
-<img src="preview.png" width="40%" >
+<img src="preview.gif" width="40%" >
