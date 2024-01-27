@@ -1,15 +1,5 @@
-## Text example
-TODO:
-- Review of libraries
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
-- Redacted mode for UIKit
-- Drawing exclusion path (wrapping text)
-- UIKit Embed button on the bottom part of a scroll view
+## Custom transition
+- https://blorenzop.medium.com/custom-view-controllers-transitions-aa8c052f8049
 
 ```swift
 struct ContentView: View {
@@ -20,4 +10,4 @@ struct ContentView: View {
 }
 ```
 
-<img src="preview.png" width="40%" >
+<img src="preview.gif" width="40%" >
