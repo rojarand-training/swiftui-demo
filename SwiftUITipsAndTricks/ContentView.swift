@@ -11,7 +11,24 @@ import CoreData
 struct ContentView: View {
 
     var body: some View {
-        Text("Hello World")
+        VStack {
+            Text("Hello World")
+            Button {
+                
+            } label: {
+                Text("Add to cart")
+            }
+            Button {
+                
+            } label: {
+                Text("Remove from cart")
+            }
+            Button {
+                
+            } label: {
+                Text("Go to cart")
+            }
+        }
     }
 }
 

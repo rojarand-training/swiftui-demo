@@ -1,0 +1,46 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add to cart" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj do koszyka"
+          }
+        }
+      }
+    },
+    "Go to cart" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idź do koszyka"
+          }
+        }
+      }
+    },
+    "Hello World" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Witaj świecie"
+          }
+        }
+      }
+    },
+    "Remove from cart" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń z koszyka"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

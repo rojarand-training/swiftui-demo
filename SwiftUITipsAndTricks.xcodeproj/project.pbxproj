@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27EC43E52B64CA33003DC58C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 27EC43E42B64CA33003DC58C /* Localizable.xcstrings */; };
 		D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */; };
 		D618CB64295ED24000601356 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB63295ED24000601356 /* ContentView.swift */; };
 		D618CB66295ED24000601356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D618CB65295ED24000601356 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27EC43E42B64CA33003DC58C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		D618CB5E295ED24000601356 /* SwiftUITipsAndTricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITipsAndTricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksApp.swift; sourceTree = "<group>"; };
 		D618CB63295ED24000601356 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		D618CB55295ED24000601356 = {
 			isa = PBXGroup;
 			children = (
+				27EC43E42B64CA33003DC58C /* Localizable.xcstrings */,
 				D618CB60295ED24000601356 /* SwiftUITipsAndTricks */,
 				D618CB76295ED24100601356 /* SwiftUITipsAndTricksTests */,
 				D618CB80295ED24100601356 /* SwiftUITipsAndTricksUITests */,
@@ -213,6 +216,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = D618CB55295ED24000601356;
 			productRefGroup = D618CB5F295ED24000601356 /* Products */;
@@ -233,6 +237,7 @@
 			files = (
 				D618CB69295ED24000601356 /* Preview Assets.xcassets in Resources */,
 				D618CB66295ED24000601356 /* Assets.xcassets in Resources */,
+				27EC43E52B64CA33003DC58C /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +485,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = andro.eu.SwiftUITipsAndTricksTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUITipsAndTricks.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUITipsAndTricks";
@@ -500,7 +505,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = andro.eu.SwiftUITipsAndTricksTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftUITipsAndTricks.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftUITipsAndTricks";
