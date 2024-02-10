@@ -1,23 +1,3 @@
-## Text example
-TODO:
-- Review of libraries
-- Swift data
-- Logger
-- BDD with SwiftUI
-- Combine+Countries
-- DatePicker
-- Review of the existing solutions
-- Redacted mode for UIKit
-- Drawing exclusion path (wrapping text)
-- UIKit Embed button on the bottom part of a scroll view
+## [Layouts guide explanation](https://stackoverflow.com/questions/37796884/on-ios-what-are-the-differences-between-margins-edge-insets-content-insets-a)
 
-```swift
-struct ContentView: View {
-
-    var body: some View {
-        Text("Hello World")
-    }
-}
-```
-
-<img src="preview.png" width="40%" >
+<img src="preview.gif" width="40%" >
