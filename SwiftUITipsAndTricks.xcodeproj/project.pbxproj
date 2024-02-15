@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		814BFB522B836A3200EBDFA8 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814BFB512B836A3200EBDFA8 /* Helpers.swift */; };
+		815A4BF72B7CB92D007E12F8 /* VASDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A4BF62B7CB92D007E12F8 /* VASDropDown.swift */; };
+		815A4BF92B7D381E007E12F8 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A4BF82B7D381D007E12F8 /* KeyboardListener.swift */; };
+		815A4BFB2B7DF8A9007E12F8 /* FrameAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815A4BFA2B7DF8A9007E12F8 /* FrameAnimator.swift */; };
 		D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */; };
 		D618CB64295ED24000601356 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D618CB63295ED24000601356 /* ContentView.swift */; };
 		D618CB66295ED24000601356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D618CB65295ED24000601356 /* Assets.xcassets */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		814BFB512B836A3200EBDFA8 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		815A4BF62B7CB92D007E12F8 /* VASDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VASDropDown.swift; sourceTree = "<group>"; };
+		815A4BF82B7D381D007E12F8 /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
+		815A4BFA2B7DF8A9007E12F8 /* FrameAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAnimator.swift; sourceTree = "<group>"; };
 		D618CB5E295ED24000601356 /* SwiftUITipsAndTricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITipsAndTricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITipsAndTricksApp.swift; sourceTree = "<group>"; };
 		D618CB63295ED24000601356 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,8 +104,12 @@
 			children = (
 				D618CB61295ED24000601356 /* SwiftUITipsAndTricksApp.swift */,
 				D618CB63295ED24000601356 /* ContentView.swift */,
+				815A4BF62B7CB92D007E12F8 /* VASDropDown.swift */,
 				D618CB65295ED24000601356 /* Assets.xcassets */,
 				D618CB67295ED24000601356 /* Preview Content */,
+				815A4BF82B7D381D007E12F8 /* KeyboardListener.swift */,
+				815A4BFA2B7DF8A9007E12F8 /* FrameAnimator.swift */,
+				814BFB512B836A3200EBDFA8 /* Helpers.swift */,
 			);
 			path = SwiftUITipsAndTricks;
 			sourceTree = "<group>";
@@ -257,7 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815A4BF92B7D381E007E12F8 /* KeyboardListener.swift in Sources */,
+				814BFB522B836A3200EBDFA8 /* Helpers.swift in Sources */,
+				815A4BF72B7CB92D007E12F8 /* VASDropDown.swift in Sources */,
 				D618CB64295ED24000601356 /* ContentView.swift in Sources */,
+				815A4BFB2B7DF8A9007E12F8 /* FrameAnimator.swift in Sources */,
 				D618CB62295ED24000601356 /* SwiftUITipsAndTricksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
