@@ -6,6 +6,9 @@
 //
 
 import XCTest
+import FlagsLib
+import PodFlagsLib2
+
 @testable import SwiftUITipsAndTricks
 
 final class SwiftUITipsAndTricksTests: XCTestCase {
@@ -18,19 +21,62 @@ final class SwiftUITipsAndTricksTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_countries_json_file_is_accessible_via_bundle_main_property() throws {
+        let url = Bundle.main.url(forResource: "countries", withExtension: "json")
+        XCTAssertNotNil(url)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_countries_test_json_file_is_not_accessible_via_bundle_main_property() throws {
+        let url = Bundle.main.url(forResource: "countries-test", withExtension: "json")
+        XCTAssertNil(url)
+    }
+    
+    func test_countries_test_json_file_is_accessible_using_test_class() throws {
+        let url = Bundle(for: Self.self).url(forResource: "countries-test", withExtension: "json")
+        XCTAssertNotNil(url)
+    }
+    
+    func test_countries_test_json_file_is_accessible_via_bundle_allBundles_property() throws {
+        let bundle = Bundle.allBundles.first{ $0.bundlePath.contains("SwiftUITipsAndTricksTests") }!
+        let url = bundle.url(forResource: "countries-test", withExtension: "json")
+        XCTAssertNotNil(url)
+    }
+    
+    func test_flag_data_isaccessible() throws {
+        XCTAssertNotNil(FlagsLib.getFlagData(byCountryTag: "pl"))
+    }
+    
+    func test_local_library_resuorces_are_avaliable__path_combined() throws {
+        let bundlePath = Bundle.main.bundlePath + "/FlagsLib_FlagsLib.bundle"
+        XCTAssertNotNil(Bundle(path: bundlePath)?.url(forResource: "pl", withExtension: "png"))
     }
 
+    func test_framowork_can_access_its_resources() throws {
+        XCTAssertNotNil(PodFlags.getResourcesData(byCountryTag: "us"))
+    }
+    
+    func test_framework_resources_are_available_using_its_class_class() throws {
+        let url = Bundle(for: PodFlags.self).url(forResource: "us", withExtension: "png", subdirectory: "Flags")
+        XCTAssertNotNil(url)
+    }
+    
+    func test_framework_resources_are_available_using_framoworks() throws {
+        let url = Bundle.allFrameworks.first{ $0.bundlePath.contains("PodFlagsLib2") }!.url(forResource: "us", withExtension: "png", subdirectory: "Flags")
+        XCTAssertNotNil(url)
+    }
+    
+    func test_resource_bundle_resources_are_available_using__parth_combined() throws {
+        let bundlePath = Bundle.main.bundlePath + "/Frameworks/PodFlagsLib2.framework/ResourceBundlesPodFlagsLib2.bundle"
+        XCTAssertNotNil(Bundle(path: bundlePath)?.url(forResource: "ar", withExtension: "png"))
+    }
+    
+    func test_resource_bundle_resources_are_available_using__framework() throws {
+        let url = Bundle.allFrameworks.first{ $0.bundlePath.contains("PodFlagsLib2") }!.url(forResource: "ar", withExtension: "png", subdirectory: "ResourceBundlesPodFlagsLib2.bundle")
+        XCTAssertNotNil(url)
+    }
+    
+    func test_resource_bundle_resources_are_available_using_class() throws {
+        let url = Bundle(for: PodFlags.self).url(forResource: "ar", withExtension: "png", subdirectory: "ResourceBundlesPodFlagsLib2.bundle")
+        XCTAssertNotNil(url)
+    }
 }

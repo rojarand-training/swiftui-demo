@@ -1,0 +1,35 @@
+{
+  "name": "PodFlagsLib2",
+  "version": "0.1.0",
+  "summary": "A short description of PodFlagsLib2.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Robert Andrzejczyk/PodFlagsLib2",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Robert Andrzejczyk": "robert.andrzejczyk@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Robert Andrzejczyk/PodFlagsLib2.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "PodFlagsLib2/DevSources/**/*",
+  "resources": "PodFlagsLib2/Resources/*",
+  "resource_bundles": {
+    "ResourceBundlesPodFlagsLib2": [
+      "PodFlagsLib2/PodRes/*.png"
+    ]
+  },
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "source_files": "PodFlagsLib2/DevTests/**/*"
+    }
+  ]
+}

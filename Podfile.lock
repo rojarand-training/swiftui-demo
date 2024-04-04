@@ -1,0 +1,18 @@
+PODS:
+  - PodFlagsLib2 (0.1.0)
+  - PodFlagsLib2/Tests (0.1.0)
+
+DEPENDENCIES:
+  - PodFlagsLib2 (from `.`)
+  - PodFlagsLib2/Tests (from `.`)
+
+EXTERNAL SOURCES:
+  PodFlagsLib2:
+    :path: "."
+
+SPEC CHECKSUMS:
+  PodFlagsLib2: a5bbfc7378191e50fd0ce3a1b29eb51ef2fe48fe
+
+PODFILE CHECKSUM: cfcc81ab8fbf00b4abeae99313f1b68f3916a1c6
+
+COCOAPODS: 1.15.2
